@@ -59,7 +59,7 @@ export class LeadsComponent implements OnInit {
       cell: [''],
       email: ['', [Validators.required, Validators.email]],
       country: [''],
-      notes: [''],
+      referral: [''],
     });
   }
 
@@ -118,8 +118,8 @@ export class LeadsComponent implements OnInit {
       })
       .subscribe(
         (res: any) => {
-          console.log('res: ', res);
           this.loading = false;
+          this.modalService.dismissAll();
           this.router.navigate([`/dashboard/leads/${res.leads._id}`]);
         },
         (err: any) => {
