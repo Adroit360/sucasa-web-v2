@@ -118,6 +118,7 @@ export class LeadsComponent implements OnInit {
       })
       .subscribe(
         (res: any) => {
+          console.log('res: ', res);
           this.loading = false;
           this.router.navigate([`/dashboard/leads/${res.leads._id}`]);
         },
