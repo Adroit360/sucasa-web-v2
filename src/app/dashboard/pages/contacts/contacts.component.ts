@@ -1,11 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+  UntypedFormControl,
+} from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSelect } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import {
+  map,
+  Observable,
+  ReplaySubject,
+  startWith,
+  Subject,
+  take,
+  takeUntil,
+} from 'rxjs';
 import { IContacts } from 'src/app/models/iContacts';
 import { ContactService } from './service/contact.service';
 
@@ -29,6 +45,10 @@ export class ContactsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  @ViewChild('singleSelect', { static: true }) singleSelect!: MatSelect;
+
+  /** */
 
   constructor(
     private service: ContactService,

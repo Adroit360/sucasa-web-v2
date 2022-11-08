@@ -1,11 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { map, Observable, startWith } from 'rxjs';
 import { ILeads } from 'src/app/models/iLeads';
 import { LeadService } from './service/lead.service';
 
@@ -25,6 +31,13 @@ export class LeadsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  /**Select Form */
+  /** list of banks */
+  myControl = new FormControl('');
+  // options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions!: Observable<string[]>;
+  countries: any = [];
 
   constructor(
     private service: LeadService,
@@ -52,6 +65,19 @@ export class LeadsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLeads();
+
+    this.service.getCountries().subscribe((res: any) => {
+      const result = res;
+      result.forEach((element: any) => {
+        if (element.idd['suffixes'])
+          this.countries.push(`${element.flag} ${element.name.common}`);
+      });
+    });
+
+    this.filteredOptions = this.leadForm.controls['country'].valueChanges.pipe(
+      startWith(''),
+      map((value: any) => this._filter(value || ''))
+    );
   }
 
   applyFilter(event: Event) {
@@ -85,23 +111,36 @@ export class LeadsComponent implements OnInit {
 
     console.log(this.leadForm.value);
 
-    this.service.addLoad(this.leadForm.value).subscribe(
-      (res: any) => {
-        this.loading = false;
-        this.router.navigate([`/dashboard/leads/${res.leads._id}`]);
-      },
-      (err: any) => {
-        this.loading = false;
-        this.snackBar.open('Error Adding Leads', 'Retry', {
-          duration: 5000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'center',
-        });
-      }
-    );
+    this.service
+      .addLoad({
+        ...this.leadForm.value,
+        country: this.leadForm.value.country.split(' ').slice(1).join(' '),
+      })
+      .subscribe(
+        (res: any) => {
+          this.loading = false;
+          this.router.navigate([`/dashboard/leads/${res.leads._id}`]);
+        },
+        (err: any) => {
+          this.loading = false;
+          this.snackBar.open('Error Adding Leads', 'Retry', {
+            duration: 5000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'center',
+          });
+        }
+      );
   }
 
   open(content: any) {
     this.modalService.open(content, { size: 'xl' });
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.countries.filter((country: any) =>
+      country.toLowerCase().includes(filterValue)
+    );
   }
 }

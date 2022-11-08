@@ -1,5 +1,4 @@
 <section>
-
   <div class="app-page-title">
     <div class="page-title-wrapper">
       <div class="page-title-heading">
@@ -12,17 +11,28 @@
         </div>
       </div>
       <div class="page-title-action">
-        <button mat-raised-button class="primary_btn" (click)="open(content)">Add Contact</button>
+        <button mat-raised-button class="primary_btn" (click)="open(content)">
+          Add Contact
+        </button>
       </div>
     </div>
   </div>
 
-
   <ng-template #content let-modal>
-    <form class="form w-100" [formGroup]="contactForm" (ngSubmit)="addContact()" novalidate>
+    <form
+      class="form w-100"
+      [formGroup]="contactForm"
+      (ngSubmit)="addContact()"
+      novalidate
+    >
       <div class="modal-header">
         <h4 class="modal-title">Add Contact</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -41,44 +51,74 @@
 
           <div class="col-md-4">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingfirstName" placeholder="First Name"
-                formControlName="firstName">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingfirstName"
+                placeholder="First Name"
+                formControlName="firstName"
+              />
               <label for="floatingfirstName">First Name</label>
             </div>
           </div>
 
           <div class="col-md-3">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatinglastName" placeholder="Last Name"
-                formControlName="lastName">
+              <input
+                type="text"
+                class="form-control"
+                id="floatinglastName"
+                placeholder="Last Name"
+                formControlName="lastName"
+              />
               <label for="floatinglastName">Last Name</label>
             </div>
           </div>
 
           <div class="col-md-3">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingOtherName" placeholder="Other Name"
-                formControlName="otherName">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingOtherName"
+                placeholder="Other Name"
+                formControlName="otherName"
+              />
               <label for="floatingOtherName">Other Name</label>
             </div>
           </div>
-
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingPhone" placeholder="Phone" formControlName="phone">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingPhone"
+                placeholder="Phone"
+                formControlName="phone"
+              />
               <label for=" floatingPhone">Phone No.</label>
             </div>
           </div>
 
-
           <div class="col-md-6">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingEmail" placeholder="email" formControlName="email">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingEmail"
+                placeholder="email"
+                formControlName="email"
+              />
               <label for=" floatingEmail">Email Address</label>
-              <mat-error *ngIf="!contactForm.controls['firstName'].valid && contactForm.controls['firstName'].touched">
+              <mat-error
+                *ngIf="
+                  !contactForm.controls['firstName'].valid &&
+                  contactForm.controls['firstName'].touched
+                "
+              >
                 email address is required
               </mat-error>
             </div>
@@ -88,21 +128,37 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Add Referral" id="floatingNotes" style="height: 100px"
-                formControlName="referral"></textarea>
+              <textarea
+                class="form-control"
+                placeholder="Add Referral"
+                id="floatingNotes"
+                style="height: 100px"
+                formControlName="referral"
+              ></textarea>
               <label for="floatingNotes">How did you hear about us?</label>
             </div>
           </div>
         </div>
-
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Cancel</button>
-        <button type="submit" class="btn btn-outline-secondary" [disabled]="contactForm.invalid">
-          <ng-container *ngIf="loading;else noLoad">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="modal.close('Ok click')"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="btn btn-outline-secondary"
+          [disabled]="contactForm.invalid"
+        >
+          <ng-container *ngIf="loading; else noLoad">
             <span class="indicator-progress" [style.display]="'block'">
               Please wait...
-              <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+              <span
+                class="spinner-border spinner-border-sm align-middle ms-2"
+              ></span>
             </span>
           </ng-container>
           <ng-template #noLoad>
@@ -113,53 +169,69 @@
     </form>
   </ng-template>
 
-
-  <ng-container *ngIf="contacts;else spinner">
-
+  <ng-container *ngIf="contacts; else spinner">
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">
         <i class="bi bi-search"></i>
       </span>
-      <input type="text" (keyup)="applyFilter($event)" class="form-control" placeholder="Search Leads"
-        aria-label="search" aria-describedby="basic-addon1">
+      <input
+        type="text"
+        (keyup)="applyFilter($event)"
+        class="form-control"
+        placeholder="Search Leads"
+        aria-label="search"
+        aria-describedby="basic-addon1"
+      />
     </div>
 
     <div class="table_section">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z8"
+        matSort
+      >
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Name</th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Account Name
+          </th>
           <td mat-cell *matCellDef="let element" class="active-name">
-            <a routerLink="/dashboard/contacts/{{element._id}}">{{element.title}} {{element.firstName}}
-              {{element.lastName}} {{element.otherName}}
+            <a routerLink="/dashboard/contacts/{{ element._id }}"
+              >{{ element.title }} {{ element.firstName }}
+              {{ element.lastName }} {{ element.otherName }}
             </a>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="phone">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone No.</th>
-          <td mat-cell *matCellDef="let element">{{element.phone}}</td>
+          <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
         </ng-container>
 
         <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email Address</th>
-          <td mat-cell *matCellDef="let element">{{element.email}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Email Address
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
         </ng-container>
 
         <ng-container matColumnDef="agent">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Assigned To.</th>
-          <td mat-cell *matCellDef="let element">{{element.assigned_agent.firstName}}
-            {{element.assigned_agent.lastName}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Assigned To.
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.assigned_agent.firstName }}
+            {{ element.assigned_agent.lastName }}
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
       </table>
     </div>
-
   </ng-container>
 
   <ng-template #spinner>
     <app-spinner></app-spinner>
   </ng-template>
-
 </section>

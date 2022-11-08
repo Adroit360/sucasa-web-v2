@@ -37,6 +37,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+
 const modules = [
   MatTableModule,
   MatAutocompleteModule,
@@ -74,6 +76,7 @@ const modules = [
   MatTreeModule,
   MatBottomSheetModule,
   MatNativeDateModule,
+  NgxMatSelectSearchModule,
 ];
 
 @NgModule({
