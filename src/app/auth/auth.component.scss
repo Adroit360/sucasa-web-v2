@@ -1,0 +1,50 @@
+.bg_image {
+  background-image: url(../../assets/media/bg4.jpg);
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.company_name {
+  h3 {
+    font-size: 50px;
+    color: white;
+
+  }
+
+  p {
+    font-size: 20px;
+    color: white;
+
+  }
+}
+
+.login_form {
+  h1 {
+    margin-bottom: 0.75rem !important;
+    font-weight: 700 !important;
+    font-size: 1.75rem;
+  }
+
+  p {
+    font-weight: 500 !important;
+    font-size: 1.075rem !important;
+  }
+}
+
+
+.error_show {
+  margin-top: 5px;
+  color: red;
+  font-style: italic;
+}
+
+
+.card {
+  width: 450px;
+}
+
+
+.auth-title {
+  margin-bottom: 50px;
+}

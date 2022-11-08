@@ -1,0 +1,97 @@
+<section>
+
+  <div class="app-page-title">
+    <div class="page-title-wrapper">
+      <div class="page-title-heading">
+        <div class="page-title-icon">
+          <i class="bi bi-journal-text"></i>
+        </div>
+        <div>
+          Account Profile
+          <div class="page-title-subheading">Account details
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <ng-container *ngIf="contact;else spinner">
+    <div class="row align-item-center mb-5">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+        <div class="app_card">
+          <div class="col mb-3">
+            <span class="secondary_color">Name</span>
+            <p class="page_name">{{contact.title}} {{contact.firstName}} {{contact.lastName}} {{contact.otherName}}</p>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <div class="col">
+              <span class="secondary_color">Phone No.</span>
+              <p>{{contact.phone}}</p>
+            </div>
+            <div class="col">
+              <span class="secondary_color">Email Address</span>
+              <p>{{contact.email}}</p>
+            </div>
+            <div class="col">
+              <span class="secondary_color">Country</span>
+              <p>{{contact.country}}</p>
+            </div>
+            <div class="col">
+              <span class="secondary_color">Assigned To.</span>
+              <!-- <p>{{contact.user.firstName}} {{contact.user.lastName}}</p> -->
+            </div>
+          </div>
+          <div class="col">
+            <span class="secondary_color">Referral</span>
+            <p>{{contact.referral}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <mat-accordion class="oppo_accod" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Opportunities
+            <!-- <span> {{contact.opportunities.length}}</span> -->
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col-lg-3 mb-2 item_prop" *ngFor="let item of contact.oppo">
+            <div class="col prop-space">
+              <span class="secondary_color prop-title"
+                routerLink="/dashboard/opportunity/{{item._id}}">{{item.amount}}</span>
+              <div class="d-flex justify-content-between">
+                <span class="prop_item">Stage:</span>
+                <span class="prop_item">{{item.stage}}</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="prop_item">Amount:</span>
+                <span class="prop_item">{{item.amount | currency: '$'}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Cases (0)
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ng-container>
+
+  <ng-template #spinner>
+    <app-spinner></app-spinner>
+  </ng-template>
+
+
+</section>

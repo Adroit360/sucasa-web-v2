@@ -1,1 +1,182 @@
 /* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@import './node_modules/bootstrap/scss/bootstrap';
+@import '/Users/mensah/Desktop/codeBase/Adroit/sucasa/frontend/node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Helvetica Neue", sans-serif;
+}
+
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+
+.primary_color {
+  color: #143931;
+}
+
+.secondary_color {
+  color: #B78C48;
+}
+
+
+.page_title {
+  padding-bottom: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+  border-bottom: 1px solid #dfe3e8 !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  font-weight: 300;
+  color: #52667b;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: rgba(0, 0, 0, .03);
+}
+
+
+.active-name {
+  color: blue;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+th {
+  color: black;
+}
+
+.app-page-title {
+  position: relative;
+  margin-bottom: 50px;
+
+  .page-title-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .page-title-heading {
+      font-size: 1.25rem;
+      font-weight: 400;
+      display: flex;
+      align-content: center;
+      align-items: center;
+
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-title-icon {
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      text-align: center;
+      padding: .83333rem;
+      margin: 0 30px 0 0;
+      background: #fff;
+      box-shadow: 0 .46875rem 2.1875rem rgba(4, 9, 20, .03), 0 .9375rem 1.40625rem rgba(4, 9, 20, .03), 0 .25rem .53125rem rgba(4, 9, 20, .05), 0 .125rem .1875rem rgba(4, 9, 20, .03);
+      border-radius: .25rem;
+      width: 60px;
+      height: 60px;
+
+      .bi {
+        color: #B78C48;
+      }
+    }
+  }
+
+  .page-title-subheading {
+    padding: 3px 0 0;
+    font-size: .88rem;
+    opacity: .6;
+  }
+
+  .page-title-action {
+    margin-left: auto;
+  }
+}
+
+
+.app_card {
+  padding: 20px;
+  border-radius: .375rem !important;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 20, .08), 0 1px 2px rgba(0, 0, 20, .08) !important;
+}
+
+
+.page_name {
+  font-size: x-large;
+}
+
+.prop-title {
+  font-size: 20px;
+  cursor: pointer;
+  padding-bottom: 200px;
+}
+
+.item_prop {
+  padding-right: 20px;
+}
+
+.prop-space {
+  padding-right: 30px;
+}
+
+.prop_item {
+  font-size: 15px;
+}
+
+
+.primary_btn {
+  color: #fff;
+  background-color: #143931;
+  border-color: #143931;
+}
+
+.noNotes {
+  height: calc(30vh - 98px);
+  border-radius: 10px;
+  margin: 16px;
+  margin-left: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2rem;
+  color: lightgray;
+
+}
+
+.mat-form-field {
+  width: 100%
+}

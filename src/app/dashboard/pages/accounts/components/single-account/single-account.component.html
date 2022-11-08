@@ -1,0 +1,143 @@
+<section>
+
+  <div class="app-page-title">
+    <div class="page-title-wrapper">
+      <div class="page-title-heading">
+        <div class="page-title-icon">
+          <i class="bi bi-journal-text"></i>
+        </div>
+        <div>
+          Account Page
+          <div class="page-title-subheading">Account details
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <ng-container *ngIf="account;else spinner">
+    <div class="row align-item-center mb-3">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+        <div class="app_card">
+          <div class="col mb-3">
+            <span class="secondary_color">Name</span>
+            <p class="page_name">{{account.name}}</p>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <div class="col">
+              <span class="secondary_color">Phone No.</span>
+              <p>{{account.phone}}</p>
+            </div>
+            <div class="col">
+              <span class="secondary_color">Address</span>
+              <p>{{account.address}}</p>
+            </div>
+            <div class="col">
+              <span class="secondary_color">Account Type</span>
+              <p>{{account.status}}</p>
+            </div>
+            <div class="col">
+              <span class="secondary_color">Assigned To.</span>
+              <p>{{account.assigned_agent.firstName}} {{account.assigned_agent.lastName}}</p>
+            </div>
+          </div>
+          <div class="col">
+            <span class="secondary_color">Account ID</span>
+            <p class="text-uppercase">{{account.sid}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-item-center mb-5">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+        <div class="app_card">
+          <div class="col mb-3">
+            <h4>Contacts</h4>
+          </div>
+
+
+          <div class="row">
+            <div class="col-lg-4" *ngFor="let item of account.contact">
+              <p class="page_name secondary_color mb-2">{{item.title}} {{item.firstName}} {{item.lastName}}
+                {{item.otherName}}</p>
+              <p>
+                <span>Phone:</span>
+                {{item.phone}}
+              </p>
+
+              <p><span>Country: </span>{{item.country}}</p>
+              <p><span>Residence: </span>{{item.residence}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+
+
+        <mat-accordion class="oppo_accod" multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Opportunities
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-lg-3 mb-2 item_prop" *ngFor="let item of account.oppo">
+                <div class="col prop-space">
+                  <span class="secondary_color prop-title mb-3"
+                    routerLink="/dashboard/opportunity/{{item._id}}">{{item.name}}</span>
+                  <p><span>Stage: </span>Negotiation</p>
+                  <p><span>Amount: </span>{{item.amount}}</p>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Cases (0)
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+
+
+      <div class="col-lg-4">
+        <div class="app_card">
+          <div class="col mb-3">
+
+            <div class="noNotes">
+              No Notes Added Yet.
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+  </ng-container>
+
+  <ng-template #spinner>
+    <app-spinner></app-spinner>
+  </ng-template>
+
+</section>

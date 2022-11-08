@@ -1,0 +1,225 @@
+<section>
+
+  <ng-container *ngIf="lead;else spinner">
+    <div class="app-page-title">
+      <div class="page-title-wrapper">
+        <div class="page-title-heading">
+          <div class="page-title-icon">
+            <i class="bi bi-calendar2-range"></i>
+          </div>
+          <div>
+            Lead Details
+            <div class="page-title-subheading">Complete Lead Details</div>
+          </div>
+        </div>
+        <div class="page-title-action">
+          <button mat-raised-button class="primary_btn" (click)="open(content)">Edit Status</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Update Opportunity</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <form novalidate>
+          <select class="form-select mb-3" formControlName="stage">
+            <option ed>{{lead.stage}}</option>
+            <option value="New">New</option>
+            <option value="Working">Working</option>
+            <option value="Nuturing">Nuturing</option>
+            <option value="Qualified">Qualified</option>
+          </select>
+
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Add Notes" id="floatingTextarea2" style="height: 100px"
+              formControlName="notes"></textarea>
+            <label for="floatingTextarea2">Notes</label>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Cancel</button>
+        <button type="submit" class="btn btn-outline-secondary">Update</button>
+      </div>
+    </ng-template>
+
+
+
+    <div class="row align-item-center mb-5">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+        <div class="app_card">
+          <div class="col mb-3">
+            <span class="secondary_color">Name</span>
+            <p class="page_name">{{lead.title}} {{lead.firstName}} {{lead.lastName}} {{lead.otherName}}</p>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <div class="col">
+              <span class="secondary_color">Status</span>
+              <p>{{lead.stage}}</p>
+            </div>
+            <div class="col">
+              <span class="secondary_color">Email Address</span>
+              <p>{{lead.phone}}</p>
+              <p>{{lead.cell}}</p>
+            </div>
+            <div class="col">
+              <span class="secondary_color">Address</span>
+              <p>{{lead.address1}}</p>
+              <p>{{lead.address2}}</p>
+            </div>
+            <div class="col">
+              <span class="secondary_color">Assigned To.</span>
+              <p>{{lead.assigned_to.firstName}} {{lead.assigned_to.lastName}}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12 mb-3">
+        <div class="app_card">
+          <h3>Basic Info</h3>
+          <form [formGroup]="leadForm" novalidate>
+
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingTitle" placeholder="Title"
+                    formControlName="title">
+                  <label for=" floatingTitle">Title</label>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingfirstName" placeholder="First Name"
+                    formControlName="firstName">
+                  <label for="floatingfirstName">First Name</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatinglastName" placeholder="Last Name"
+                    formControlName="lastName">
+                  <label for="floatinglastName">Last Name</label>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingOtherName" placeholder="Other Name"
+                    formControlName="otherName">
+                  <label for="floatingOtherName">Other Name</label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingPhone" placeholder="Phone"
+                    formControlName="phone">
+                  <label for=" floatingPhone">Phone No.</label>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingCell" placeholder="Cell" formControlName="cell">
+                  <label for=" floatingCell">Cell No.</label>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingEmail" placeholder="email"
+                    formControlName="email">
+                  <label for=" floatingEmail">Email Address</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingAdd1" placeholder="Address 1"
+                    formControlName="address1">
+                  <label for=" floatingAdd1">Address 1</label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingAdd2" placeholder="Address 2"
+                    formControlName="address2">
+                  <label for=" floatingAdd2">Address 2</label>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button mat-raised-button class="primary_btn">Edit Details</button>
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 mb-3">
+        <div class="app_card">
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Uploaded Documents
+          </mat-panel-title>
+          <mat-panel-description>
+            0 document uploaded
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Notes (0)
+          </mat-panel-title>
+          <mat-panel-description>
+
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+
+  </ng-container>
+
+  <ng-template #spinner>
+    <app-spinner></app-spinner>
+  </ng-template>
+
+</section>

@@ -1,0 +1,175 @@
+<section>
+
+  <div class="app-page-title">
+    <div class="page-title-wrapper">
+      <div class="page-title-heading">
+        <div class="page-title-icon">
+          <i class="bi bi-terminal-plus"></i>
+        </div>
+        <div>
+          Dashboard
+          <div class="page-title-subheading">Summary of property statistics</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute money">
+            <i class="material-icons opacity-10">weekend</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Properties Completed</p>
+            <h4 class="mb-0">800</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute userss">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Today's Contacts</p>
+            <h4 class="mb-0">230</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute propps">
+            <i class="material-icons opacity-10">link</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">New Opportunities</p>
+            <h4 class="mb-0">3,462</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute bluee">
+            <i class="material-icons opacity-10"><span class="material-symbols-outlined">
+                real_estate_agent
+              </span>
+            </i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Today's Sales</p>
+            <h4 class="mb-0">$103,430</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel-header panel-header-lg mb-5">
+    <h4 class="projections">2022 Projections</h4>
+    <canvas baseChart id="bigDashboardChart" [datasets]="lineBigDashboardChartData"
+      [labels]="lineBigDashboardChartLabels" [colors]="lineBigDashboardChartColors"
+      [options]="lineBigDashboardChartOptions" [chartType]="lineBigDashboardChartType"
+      (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+  <div class="main-content">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Properties Statistics </h5>
+            <h4 class="card-title">Properties Completed</h4>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas baseChart id="lineChartExample" [datasets]="lineChartData" [labels]="lineChartLabels"
+                [colors]="lineChartColors" [options]="lineChartOptions" [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">2021 Sales</h5>
+            <h4 class="card-title">Properties Sold</h4>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <!-- <canvas id="lineChartExampleWithNumbersAndGrid"></canvas> --> -->
+              <canvas baseChart id="lineChartExampleWithNumbersAndGrid" [datasets]="lineChartWithNumbersAndGridData"
+                [labels]="lineChartWithNumbersAndGridLabels" [colors]="lineChartWithNumbersAndGridColors"
+                [options]="lineChartWithNumbersAndGridOptions" [chartType]="lineChartWithNumbersAndGridType"
+                (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Email Statistics</h5>
+            <h4 class="card-title">24 Hours Performance</h4>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas baseChart id="barChartSimpleGradientsNumbers" [datasets]="lineChartGradientsNumbersData"
+                [labels]="lineChartGradientsNumbersLabels" [colors]="lineChartGradientsNumbersColors"
+                [options]="lineChartGradientsNumbersOptions" [chartType]="lineChartGradientsNumbersType"
+                (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</section>
